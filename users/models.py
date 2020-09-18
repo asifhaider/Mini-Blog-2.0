@@ -13,8 +13,8 @@ class Profile (models.Model):
     def __str__(self):
         return f"{self.user.username}'s Profile"
     # override it to add image resize functions
-    def save(self):
-        super().save()
+    def save(self, *args, **kawrgs): # positional and keyword arguments
+        super().save(*args, **kawrgs)
 
         img = Image.open(self.image.path)
         if img.height > 300 or img.width > 300:
